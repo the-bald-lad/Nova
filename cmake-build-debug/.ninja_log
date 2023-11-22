@@ -1,0 +1,14 @@
+# ninja log v5
+1	400	1700647703542215427	CMakeFiles/programming_language.dir/src/main.cpp.o	14b461c1687d667c
+400	532	1700647703674219668	programming_language	8ea42c97c5b17a0c
+1	447	1700602189050165621	CMakeFiles/programming_language.dir/src/lexer.cpp.o	abf740d85601510d
+10	43	1700649068272414573	build.ninja	e8a5761abeb84335
+1	389	1700647692781871544	CMakeFiles/programming_language.dir/src/Lexical_Analysis/Token.cpp.o	b0e7d9f6652261c3
+1	263	1700602090504714502	CMakeFiles/programming_language.dir/src/Token.cpp.o	83060e05a1055378
+1	528	1700647692917875866	CMakeFiles/programming_language.dir/src/Lexical_Analysis/lexer.cpp.o	da50c72d04dbc9b6
+0	23	1700649068272414573	build.ninja	e8a5761abeb84335
+2	257	1700649068536412875	CMakeFiles/programming_language.dir/src/Error_Classes/Illegal_Char_Error.cpp.o	1ff44986e197d9c0
+2	276	1700649068556412746	CMakeFiles/programming_language.dir/src/Error_Classes/Base_Error.cpp.o	9c445ab8aa988150
+2	388	1700649068668412025	CMakeFiles/programming_language.dir/src/Lexical_Analysis/Lexer.cpp.o	1571fdb559359a36
+1	399	1700649068676411974	CMakeFiles/programming_language.dir/src/main.cpp.o	14b461c1687d667c
+399	506	1700649068784411279	programming_language	adf3d908ab558af6
