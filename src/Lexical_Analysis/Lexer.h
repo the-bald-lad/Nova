@@ -1,14 +1,15 @@
 #pragma once
 
 #include "Token.h"
-#include "../Error_Classes/Errors.h"
+#include "Error_Classes/Errors.h"
 
 #include <string>
 #include <vector>
 
-namespace Nova_Lang {
-
-    class Lexer {
+namespace Nova_Lang
+{
+    class Lexer
+    {
     public: // Lexer public methods
         explicit Lexer(std::string input, std::string file_name);
 
@@ -45,7 +46,7 @@ namespace Nova_Lang {
         char current_char;
 
         // Tokens
-        std::vector<Token> tokens;  // Temporary, will be replaced with a vector of Token objects
+        std::vector<Token> tokens;
 
         // Errors
         std::vector<Base_Error> errors;
@@ -55,5 +56,5 @@ namespace Nova_Lang {
         void Make_Number();
     };
 
-    std::vector<Token> run_lexer(std::string&, std::string&);
+    std::pair<std::vector<Token>, std::vector<Base_Error>> run_lexer(std::string&, std::string&);
 }

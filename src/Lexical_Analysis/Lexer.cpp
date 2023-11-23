@@ -4,8 +4,8 @@
 
 namespace Nova_Lang
 {
-
-    Lexer::Lexer(std::string input, std::string file_name) {
+    Lexer::Lexer(std::string input, std::string file_name)
+    {
         this->input = std::move(input);
         this->file_name = std::move(file_name);  // Will be used later for error messages
         this->current_char = this->input[this->position];  // Set the current character to the first character in the input
@@ -26,8 +26,8 @@ namespace Nova_Lang
 
     void Lexer::Tokenize()
     {
-        while (this->current_char != this->end_of_file) {
-
+        while (this->current_char != this->end_of_file)
+        {
             std::string current_char_string = std::string(1, this->current_char);
 
             if (this->current_char == ' ' || this->current_char == '\t')
@@ -76,9 +76,7 @@ namespace Nova_Lang
             else
             {
                 Illegal_Char_Error error = Illegal_Char_Error(this->current_char, this->file_name);
-
                 errors.push_back(error);
-                exit(1);
             }
         }
     }
@@ -132,17 +130,12 @@ namespace Nova_Lang
         }
     }
 
-    // TODO: FIX THIS
-    std::vector<Token> run_lexer(std::string& input, std::string& file_name)
+    std::pair<std::vector<Token>, std::vector<Base_Error>> run_lexer(std::string& input, std::string& file_name)
     {
         Nova_Lang::Lexer lexer(input, file_name);
         lexer.Tokenize();
 
-        if (!lexer.Get_Errors().empty())
-            return lexer.Get_Errors();  // Return type not the same as the function return type
-
-
-        return lexer.Get_Tokens();
+        return std::make_pair(lexer.Get_Tokens(), lexer.Get_Errors());
     }
 }
 
