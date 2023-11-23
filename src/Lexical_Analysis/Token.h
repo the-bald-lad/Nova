@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace programming_language_name
+namespace Nova_Lang
 {
     class Token
     {
