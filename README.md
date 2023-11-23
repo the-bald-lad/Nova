@@ -8,7 +8,7 @@ This is planned to be a programming language that will be developed over the cou
 Nova (Nova_Lang) is a programming language that is planned to be a compiled
 language, with an initial focus on being general purpose.
 
-I am planning to have this language be easy to use, be compliled but also
+I am planning to have this language be easy to use, be compiled but also
 have a system similar to Haskell's `runhaskell` command, where you can test
 your program without having to compile it.
 
