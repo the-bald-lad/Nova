@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-namespace programming_language_name {
+namespace Nova_Lang {
 
     class Lexer {
     public: // Lexer public methods

@@ -2,7 +2,7 @@
 
 #include <utility>
 
-namespace programming_language_name
+namespace Nova_Lang
 {
     Token::Token()
     {

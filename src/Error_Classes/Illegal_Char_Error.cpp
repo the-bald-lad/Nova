@@ -1,6 +1,6 @@
 #include "Errors.h"
 
-namespace programming_language_name
+namespace Nova_Lang
 {
     Illegal_Char_Error::Illegal_Char_Error(char c, std::string file_name)
         : Base_Error("Illegal Character", std::string(1, c), std::move(file_name))

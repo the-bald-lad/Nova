@@ -1,6 +1,6 @@
 #include "Errors.h"
 
-namespace programming_language_name
+namespace Nova_Lang
 {
     Base_Error::Base_Error(std::string error_name, std::string details, std::string file_name)
     {

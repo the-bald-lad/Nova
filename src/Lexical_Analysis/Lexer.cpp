@@ -2,7 +2,7 @@
 
 #include <utility>
 
-namespace programming_language_name
+namespace Nova_Lang
 {
 
     Lexer::Lexer(std::string input, std::string file_name) {
@@ -135,7 +135,7 @@ namespace programming_language_name
     // TODO: FIX THIS
     std::vector<Token> run_lexer(std::string& input, std::string& file_name)
     {
-        programming_language_name::Lexer lexer(input, file_name);
+        Nova_Lang::Lexer lexer(input, file_name);
         lexer.Tokenize();
 
         if (!lexer.Get_Errors().empty())

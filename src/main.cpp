@@ -16,9 +16,9 @@ void std_input()
     if (input == "exit")
         exit(0);
 
-    std::vector<programming_language_name::Token> tokens = programming_language_name::run_lexer(input, file_name);
+    std::vector<Nova_Lang::Token> tokens = Nova_Lang::run_lexer(input, file_name);
 
-    for (programming_language_name::Token token : tokens)
+    for (Nova_Lang::Token token : tokens)
         std::cout << token.Represent() << " | ";
 }
 
