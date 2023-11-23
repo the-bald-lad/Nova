@@ -3,7 +3,10 @@
 
 #include "Lexical_Analysis/Lexer.h"
 
-
+/**
+ * @brief Get input from standard input and run the lexer on it.
+ * This is the equivalent of running the command `nova run` in a terminal.
+*/
 void std_input()
 {
     std::string file_name = "stdin";
@@ -16,10 +19,22 @@ void std_input()
     if (input == "exit")
         exit(0);
 
-    std::vector<Nova_Lang::Token> tokens = Nova_Lang::run_lexer(input, file_name);
+    auto lexer_pair = Nova_Lang::run_lexer(input, file_name);
 
-    for (Nova_Lang::Token token : tokens)
-        std::cout << token.Represent() << " | ";
+    std::vector<Nova_Lang::Token> tokens = lexer_pair.first;
+
+    std::vector<Nova_Lang::Base_Error> errors = lexer_pair.second;
+
+    if (!errors.empty())
+    {
+        for (const Nova_Lang::Base_Error& error : errors)
+            std::cout << error.As_String() << std::endl;
+    }
+    else // Temporary: output tokens
+    {
+        for (Nova_Lang::Token token : tokens)
+            std::cout << token.Represent() << " | ";
+    }
 }
 
 void file_input() {}  // TODO: Implement file input

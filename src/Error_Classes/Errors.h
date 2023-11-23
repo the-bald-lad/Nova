@@ -13,7 +13,8 @@ namespace Nova_Lang
     };
 
 
-    class Base_Error {
+    class Base_Error
+    {
     public:
         Base_Error(std::string error_name, std::string details, std::string file_name);
 
