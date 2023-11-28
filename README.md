@@ -42,11 +42,12 @@ Please also pull request into a different branch, not the main branch.
     - Token Types
 - Basic error generation
 
-## Planned Features
+## Planned Features / To be implemented
 
+- Abstract Syntax Tree Generation
+- Compile to assembly
 - Position Tracking in input(for errors)
 - Variables
-- Compiling
 - Basic Data Types
 - Static Typing
 - Classes and Structs
@@ -59,5 +60,3 @@ Please also pull request into a different branch, not the main branch.
 - Strings
 - Chars
 - Booleans
-
-## Planned Syntax
