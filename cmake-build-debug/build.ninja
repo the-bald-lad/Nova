@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: programming_language
+# Project: nova_lang
 # Configurations: Debug
 # =============================================================================
 
@@ -39,68 +39,66 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/sam/Programming/C++/programming-language/cmake-build-debug/
+cmake_ninja_workdir = /home/sam/Dev/Nova/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target programming_language
+# Object build statements for EXECUTABLE target nova_lang
 
 
 #############################################
-# Order-only phony target for programming_language
+# Order-only phony target for nova_lang
 
-build cmake_object_order_depends_target_programming_language: phony || CMakeFiles/programming_language.dir
+build cmake_object_order_depends_target_nova_lang: phony || CMakeFiles/nova_lang.dir
 
-build CMakeFiles/programming_language.dir/src/main.cpp.o: CXX_COMPILER__programming_language_unscanned_Debug /home/sam/Programming/C++/programming-language/src/main.cpp || cmake_object_order_depends_target_programming_language
-  DEP_FILE = CMakeFiles/programming_language.dir/src/main.cpp.o.d
+build CMakeFiles/nova_lang.dir/src/main.cpp.o: CXX_COMPILER__nova_lang_unscanned_Debug /home/sam/Dev/Nova/src/main.cpp || cmake_object_order_depends_target_nova_lang
+  DEP_FILE = CMakeFiles/nova_lang.dir/src/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/programming_language.dir
-  OBJECT_FILE_DIR = CMakeFiles/programming_language.dir/src
+  INCLUDES = -I/home/sam/Dev/Nova/src
+  OBJECT_DIR = CMakeFiles/nova_lang.dir
+  OBJECT_FILE_DIR = CMakeFiles/nova_lang.dir/src
 
-build CMakeFiles/programming_language.dir/src/Lexical_Analysis/Lexer.cpp.o: CXX_COMPILER__programming_language_unscanned_Debug /home/sam/Programming/C++/programming-language/src/Lexical_Analysis/Lexer.cpp || cmake_object_order_depends_target_programming_language
-  DEP_FILE = CMakeFiles/programming_language.dir/src/Lexical_Analysis/Lexer.cpp.o.d
+build CMakeFiles/nova_lang.dir/src/Lexical_Analysis/Lexer.cpp.o: CXX_COMPILER__nova_lang_unscanned_Debug /home/sam/Dev/Nova/src/Lexical_Analysis/Lexer.cpp || cmake_object_order_depends_target_nova_lang
+  DEP_FILE = CMakeFiles/nova_lang.dir/src/Lexical_Analysis/Lexer.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/programming_language.dir
-  OBJECT_FILE_DIR = CMakeFiles/programming_language.dir/src/Lexical_Analysis
+  INCLUDES = -I/home/sam/Dev/Nova/src
+  OBJECT_DIR = CMakeFiles/nova_lang.dir
+  OBJECT_FILE_DIR = CMakeFiles/nova_lang.dir/src/Lexical_Analysis
 
-build CMakeFiles/programming_language.dir/src/Lexical_Analysis/Token.cpp.o: CXX_COMPILER__programming_language_unscanned_Debug /home/sam/Programming/C++/programming-language/src/Lexical_Analysis/Token.cpp || cmake_object_order_depends_target_programming_language
-  DEP_FILE = CMakeFiles/programming_language.dir/src/Lexical_Analysis/Token.cpp.o.d
+build CMakeFiles/nova_lang.dir/src/Error_Classes/Base_Error.cpp.o: CXX_COMPILER__nova_lang_unscanned_Debug /home/sam/Dev/Nova/src/Error_Classes/Base_Error.cpp || cmake_object_order_depends_target_nova_lang
+  DEP_FILE = CMakeFiles/nova_lang.dir/src/Error_Classes/Base_Error.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/programming_language.dir
-  OBJECT_FILE_DIR = CMakeFiles/programming_language.dir/src/Lexical_Analysis
+  INCLUDES = -I/home/sam/Dev/Nova/src
+  OBJECT_DIR = CMakeFiles/nova_lang.dir
+  OBJECT_FILE_DIR = CMakeFiles/nova_lang.dir/src/Error_Classes
 
-build CMakeFiles/programming_language.dir/src/Error_Classes/Base_Error.cpp.o: CXX_COMPILER__programming_language_unscanned_Debug /home/sam/Programming/C++/programming-language/src/Error_Classes/Base_Error.cpp || cmake_object_order_depends_target_programming_language
-  DEP_FILE = CMakeFiles/programming_language.dir/src/Error_Classes/Base_Error.cpp.o.d
+build CMakeFiles/nova_lang.dir/src/Error_Classes/Illegal_Char_Error.cpp.o: CXX_COMPILER__nova_lang_unscanned_Debug /home/sam/Dev/Nova/src/Error_Classes/Illegal_Char_Error.cpp || cmake_object_order_depends_target_nova_lang
+  DEP_FILE = CMakeFiles/nova_lang.dir/src/Error_Classes/Illegal_Char_Error.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/programming_language.dir
-  OBJECT_FILE_DIR = CMakeFiles/programming_language.dir/src/Error_Classes
-
-build CMakeFiles/programming_language.dir/src/Error_Classes/Illegal_Char_Error.cpp.o: CXX_COMPILER__programming_language_unscanned_Debug /home/sam/Programming/C++/programming-language/src/Error_Classes/Illegal_Char_Error.cpp || cmake_object_order_depends_target_programming_language
-  DEP_FILE = CMakeFiles/programming_language.dir/src/Error_Classes/Illegal_Char_Error.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/programming_language.dir
-  OBJECT_FILE_DIR = CMakeFiles/programming_language.dir/src/Error_Classes
+  INCLUDES = -I/home/sam/Dev/Nova/src
+  OBJECT_DIR = CMakeFiles/nova_lang.dir
+  OBJECT_FILE_DIR = CMakeFiles/nova_lang.dir/src/Error_Classes
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target programming_language
+# Link build statements for EXECUTABLE target nova_lang
 
 
 #############################################
-# Link the executable programming_language
+# Link the executable nova_lang
 
-build programming_language: CXX_EXECUTABLE_LINKER__programming_language_Debug CMakeFiles/programming_language.dir/src/main.cpp.o CMakeFiles/programming_language.dir/src/Lexical_Analysis/Lexer.cpp.o CMakeFiles/programming_language.dir/src/Lexical_Analysis/Token.cpp.o CMakeFiles/programming_language.dir/src/Error_Classes/Base_Error.cpp.o CMakeFiles/programming_language.dir/src/Error_Classes/Illegal_Char_Error.cpp.o
+build nova_lang: CXX_EXECUTABLE_LINKER__nova_lang_Debug CMakeFiles/nova_lang.dir/src/main.cpp.o CMakeFiles/nova_lang.dir/src/Lexical_Analysis/Lexer.cpp.o CMakeFiles/nova_lang.dir/src/Error_Classes/Base_Error.cpp.o CMakeFiles/nova_lang.dir/src/Error_Classes/Illegal_Char_Error.cpp.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/programming_language.dir
+  OBJECT_DIR = CMakeFiles/nova_lang.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = programming_language
-  TARGET_PDB = programming_language.dbg
+  TARGET_FILE = nova_lang
+  TARGET_PDB = nova_lang.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/sam/Programming/C++/programming-language/cmake-build-debug && /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/sam/Dev/Nova/cmake-build-debug && /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -111,7 +109,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/sam/Programming/C++/programming-language/cmake-build-debug && /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/sam/Programming/C++/programming-language -B/home/sam/Programming/C++/programming-language/cmake-build-debug
+  COMMAND = cd /home/sam/Dev/Nova/cmake-build-debug && /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/sam/Dev/Nova -B/home/sam/Dev/Nova/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -127,9 +125,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/sam/Programming/C++/programming-language/cmake-build-debug
+# Folder: /home/sam/Dev/Nova/cmake-build-debug
 
-build all: phony programming_language
+build all: phony nova_lang
 
 # =============================================================================
 # Built-in targets
@@ -138,14 +136,14 @@ build all: phony programming_language
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /home/sam/Programming/C++/programming-language/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /home/sam/Dev/Nova/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /home/sam/Programming/C++/programming-language/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/Linux.cmake /home/sam/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /home/sam/Dev/Nova/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################

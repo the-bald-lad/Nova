@@ -22,18 +22,6 @@ namespace Nova_Lang
         std::vector<Base_Error> Get_Errors();
 
     private: // Lexer public attributes
-        // Token constants
-        std::string T_INT      = "INT";
-        std::string T_FLOAT    = "FLOAT";
-        std::string T_PLUS     = "PLUS";
-        std::string T_MINUS    = "MINUS";
-        std::string T_MUL      = "MUL";
-        std::string T_DIV      = "DIV";
-        std::string T_MOD      = "MOD";
-        std::string T_LBRACKET = "LBRACKET";
-        std::string T_RBRACKET = "RBRACKET";
-        std::string DIGITS     = "0123456789";
-
         // Lexer variables
         std::string input;
         char end_of_file;
@@ -44,6 +32,12 @@ namespace Nova_Lang
         // Lexer information
         int position = 0;
         char current_char;
+
+        std::string digits = "0123456789";
+        std::string digits_and_decimal = digits + '.';
+
+        // Lexer Buffer
+        std::string buffer;
 
         // Tokens
         std::vector<Token> tokens;

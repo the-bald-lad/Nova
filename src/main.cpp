@@ -32,12 +32,18 @@ void std_input()
     }
     else // Temporary: output tokens
     {
-        for (Nova_Lang::Token token : tokens)
+        for (const Nova_Lang::Token& token : tokens)
             std::cout << token.Represent() << " | ";
     }
 }
 
-void file_input() {}  // TODO: Implement file input
+// TODO: Implement file input
+void file_input()
+{
+    // Get string from file
+
+
+}
 
 
 int main()

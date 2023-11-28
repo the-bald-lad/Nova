@@ -34,43 +34,43 @@ namespace Nova_Lang
             {
                 this->Advance();
             }
-            else if (this->DIGITS.find(this->current_char) != std::string::npos)
+            else if (std::isdigit(this->current_char))
             {
                 this->Make_Number();
             }
             else if (this->current_char == '+')
             {
-                this->tokens.emplace_back(this->T_PLUS);
+                this->tokens.push_back({ .type = TokenTypes::T_PLUS });
                 this->Advance();
             }
             else if (this->current_char == '-')
             {
-                this->tokens.emplace_back(this->T_MINUS);
+                this->tokens.push_back({ .type = TokenTypes::T_MINUS });
                 this->Advance();
             }
             else if (this->current_char == '*')
             {
-                this->tokens.emplace_back(this->T_MUL);
+                this->tokens.push_back({ .type = TokenTypes::T_MUL });
                 this->Advance();
             }
             else if (this->current_char == '/')
             {
-                this->tokens.emplace_back(this->T_DIV);
+                this->tokens.push_back({ .type = TokenTypes::T_DIV });
                 this->Advance();
             }
             else if (this->current_char == '%')
             {
-                this->tokens.emplace_back(this->T_MOD);
+                this->tokens.push_back({ .type = TokenTypes::T_MOD });
                 this->Advance();
             }
             else if (this->current_char == '(')
             {
-                this->tokens.emplace_back(this->T_LBRACKET);
+                this->tokens.push_back({ .type = TokenTypes::T_LBRACKET });
                 this->Advance();
             }
             else if (this->current_char == ')')
             {
-                this->tokens.emplace_back(this->T_RBRACKET);
+                this->tokens.push_back({ .type = TokenTypes::T_RBRACKET });
                 this->Advance();
             }
             else
@@ -98,9 +98,7 @@ namespace Nova_Lang
         std::string number_string;
         bool decimal_count = false;
 
-        std::string digits_and_decimal = this->DIGITS + '.';
-
-        while (this->current_char != this->end_of_file && (digits_and_decimal.find(this->current_char) != std::string::npos)) {
+        while (this->current_char != this->end_of_file && (this->digits_and_decimal.find(this->current_char) != std::string::npos)) {
             if (this->current_char == '.') {
                 if (decimal_count)
                     break;
@@ -118,7 +116,7 @@ namespace Nova_Lang
 
             std::string output_value_string = std::to_string(output_value);
 
-            this->tokens.emplace_back(this->T_INT, output_value_string);
+            this->tokens.push_back({ .type = TokenTypes::T_INT_LITERAL, .value = output_value_string });
         }
         else
         {
@@ -126,7 +124,7 @@ namespace Nova_Lang
 
             std::string output_value_string = std::to_string(output_value);
 
-            this->tokens.emplace_back(this->T_FLOAT, output_value_string);
+            this->tokens.push_back({ .type = TokenTypes::T_FLOAT_LITERAL, .value = output_value_string });
         }
     }
 
