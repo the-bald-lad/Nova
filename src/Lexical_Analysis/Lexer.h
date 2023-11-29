@@ -3,7 +3,6 @@
 #include "Token.h"
 #include "Error_Classes/Errors.h"
 
-#include <string>
 #include <vector>
 
 namespace Nova_Lang
@@ -47,7 +46,9 @@ namespace Nova_Lang
     private: // Lexer private methods
         void Advance();
 
-        void Make_Number();
+        void Create_Digit_Literal();
+
+        void Create_Identifier();
     };
 
     std::pair<std::vector<Token>, std::vector<Base_Error>> run_lexer(std::string&, std::string&);

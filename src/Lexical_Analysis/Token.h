@@ -8,7 +8,7 @@ namespace Nova_Lang
 {
     enum class TokenTypes
     {
-        // Literals
+        // Literals (Should have a value associated with them)
         T_INT_LITERAL,
         T_FLOAT_LITERAL,
         T_STRING_LITERAL,
@@ -30,6 +30,9 @@ namespace Nova_Lang
         T_RCURLY,
         T_LSQUARE,
         T_RSQUARE,
+
+        // End of statement
+        T_SEMICOLON,
     };
 
     struct Token

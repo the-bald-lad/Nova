@@ -44,6 +44,7 @@ Please also pull request into a different branch, not the main branch.
 
 ## Planned Features / To be implemented
 
+- Input from file
 - Abstract Syntax Tree Generation
 - Compile to assembly
 - Position Tracking in input(for errors)
