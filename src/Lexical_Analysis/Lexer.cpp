@@ -2,6 +2,7 @@
 
 #include <utility>
 
+
 namespace Nova_Lang
 {
     Lexer::Lexer(std::string input, std::string file_name)
@@ -30,14 +31,36 @@ namespace Nova_Lang
         {
             std::string current_char_string = std::string(1, this->current_char);
 
-            if (this->current_char == ' ' || this->current_char == '\t')
+            if (this->current_char == ' ' || this->current_char == '\t' || this->current_char == '\n')  // Is a whitespace character
             {
                 this->Advance();
             }
-            else if (std::isdigit(this->current_char))
+
+            /* Literals and keywords */
+
+            else if (std::isdigit(this->current_char))  // Is a digit literal
             {
-                this->Make_Number();
+                this->Create_Digit_Literal();
             }
+            else if (std::isalpha(this->current_char))  // Is an identifier or keyword
+            {
+                this->Create_Identifier();
+            }
+
+            /* End of line*/
+            else if (this->current_char == ';')
+            {
+                // If a semicolon is found, the statement is over.
+                // This means that the buffer can be cleared.
+
+                this->buffer.clear();
+
+                this->tokens.push_back({ .type = TokenTypes::T_SEMICOLON });
+                this->Advance();
+            }
+
+            /* Operators */
+
             else if (this->current_char == '+')
             {
                 this->tokens.push_back({ .type = TokenTypes::T_PLUS });
@@ -63,6 +86,9 @@ namespace Nova_Lang
                 this->tokens.push_back({ .type = TokenTypes::T_MOD });
                 this->Advance();
             }
+
+            /* Brackets */
+
             else if (this->current_char == '(')
             {
                 this->tokens.push_back({ .type = TokenTypes::T_LBRACKET });
@@ -71,6 +97,25 @@ namespace Nova_Lang
             else if (this->current_char == ')')
             {
                 this->tokens.push_back({ .type = TokenTypes::T_RBRACKET });
+                this->Advance();
+            }
+            else if (this->current_char == '{')
+            {
+                this->tokens.push_back({ .type = TokenTypes::T_LCURLY });
+                this->Advance();
+            }
+            else if (this->current_char == '}')
+            {
+                this->tokens.push_back({ .type = TokenTypes::T_RCURLY });
+                this->Advance();
+            }
+            else if (this->current_char == '[')
+            {
+                this->tokens.push_back({ .type = TokenTypes::T_LSQUARE });
+                this->Advance();
+            }
+            else if (this->current_char == ']') {
+                this->tokens.push_back({.type = TokenTypes::T_RSQUARE});
                 this->Advance();
             }
             else
@@ -93,9 +138,8 @@ namespace Nova_Lang
     }
 
     // Create either an integer or float token
-    void Lexer::Make_Number()
+    void Lexer::Create_Digit_Literal()
     {
-        std::string number_string;
         bool decimal_count = false;
 
         while (this->current_char != this->end_of_file && (this->digits_and_decimal.find(this->current_char) != std::string::npos)) {
@@ -104,7 +148,7 @@ namespace Nova_Lang
                     break;
                 decimal_count = true;
             }
-            number_string += this->current_char;
+            this->buffer += this->current_char;
 
             this->Advance();
         }
@@ -112,7 +156,7 @@ namespace Nova_Lang
 
         if (decimal_count == 0)
         {
-            int output_value = std::stoi(number_string);
+            int output_value = std::stoi(this->buffer);
 
             std::string output_value_string = std::to_string(output_value);
 
@@ -120,14 +164,37 @@ namespace Nova_Lang
         }
         else
         {
-            float output_value = std::stof(number_string);
+            float output_value = std::stof(this->buffer);
 
             std::string output_value_string = std::to_string(output_value);
 
             this->tokens.push_back({ .type = TokenTypes::T_FLOAT_LITERAL, .value = output_value_string });
         }
+
+        this->buffer.clear();
     }
 
+    // Create an identifier or keyword token
+    void Lexer::Create_Identifier()
+    {
+        while (this->current_char != this->end_of_file && (std::isalnum(this->current_char) || this->current_char == '_'))
+        {
+            if (this->current_char == ' ')  // Temporary for testing
+                break;
+            this->buffer += this->current_char;
+
+            this->Advance();
+        }
+
+        if (this->buffer == "exit")
+            this->tokens.push_back({ .type = TokenTypes::T_EXIT });
+        //else  // This needs fixing
+        //    this->tokens.push_back({ .type = TokenTypes::T_STRING_LITERAL, .value = this->buffer });
+
+        this->buffer.clear();
+    }
+
+    // Called from main, returns a pair of vectors containing the tokens and errors
     std::pair<std::vector<Token>, std::vector<Base_Error>> run_lexer(std::string& input, std::string& file_name)
     {
         Nova_Lang::Lexer lexer(input, file_name);
