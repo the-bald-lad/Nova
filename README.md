@@ -34,20 +34,23 @@ Please also pull request into a different branch, not the main branch.
 
 ## Currently Implemented
 
-- stdin input
-    - Basic input 
+- stdin m_input
+    - Basic m_input 
 
 - Basic Lexer
     - Tokenisation
     - Token Types
 - Basic error generation
+- Basic Input from file
+- 
+
+## Partially Implemented
+- Abstract Syntax Tree Generation
+- Compile to assembly
 
 ## Planned Features / To be implemented
 
-- Input from file
-- Abstract Syntax Tree Generation
-- Compile to assembly
-- Position Tracking in input(for errors)
+- Position Tracking in m_input(for errors)
 - Variables
 - Basic Data Types
 - Static Typing
