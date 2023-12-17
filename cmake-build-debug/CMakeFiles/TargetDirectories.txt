@@ -1,3 +1,3 @@
-/home/sam/Dev/Nova/cmake-build-debug/CMakeFiles/nova_lang.dir
+/home/sam/Dev/Nova/cmake-build-debug/CMakeFiles/nova.dir
 /home/sam/Dev/Nova/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/sam/Dev/Nova/cmake-build-debug/CMakeFiles/rebuild_cache.dir

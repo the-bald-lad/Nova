@@ -1,15 +1,19 @@
-#include "Lexical_Analysis/Lexer.h"
+#include "Lexer/Lexer.h"
+#include "Parser/Parser.h"
+#include "Asm_Generation/Generate.h"
+#include "Errors/Errors.h"
+#include "Timing/Timer.h"
 
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
 
-#define NOVA_VERSION "0.0.1"
+#define NOVA_VERSION "0.0.2"
 #define DEBUG
 
 /**
- * @brief Get input from standard input and run the lexer on it.
+ * @brief Get m_input from standard m_input and run the lexer on it.
  * This is the equivalent of running the command `nova run` in a terminal.
 */
 std::pair<std::string, std::string> std_input()
@@ -29,6 +33,10 @@ std::pair<std::string, std::string> std_input()
     return std::make_pair(input, file_name);
 }
 
+/**
+ * @brief Get m_input from a file and run the lexer on it.
+ * This is the equivalent of running the command `nova run <m_file_name>` in a terminal.
+*/
 std::pair<std::string, std::string> file_input(char* &file_name)
 {
     // Get string from file
@@ -45,36 +53,74 @@ std::pair<std::string, std::string> file_input(char* &file_name)
     return std::make_pair(file_contents, file_name);
 }
 
+void make_asm(std::optional<Nova_Lang::NodeExit>& root)
+{
+    if (!root.has_value())
+    {
+        std::cerr << "Root node has no value" << std::endl;  // Change this to custom error
+        exit(1);
+    }
+
+    Nova_Lang::Assembly_Generator asm_generator(root.value());
+
+    std::ofstream outfile {"../nova-build/out.asm" };
+    outfile << asm_generator.generateAsm();
+
+    outfile.close();
+}
+
+void output_debug_tokens(std::vector<Nova_Lang::Token>& tokens)
+{
+    if (!Nova_Lang::error_buffer.empty())
+    {
+        for (const Nova_Lang::Base_Error& error : Nova_Lang::error_buffer)
+            std::cout << error.As_String() << std::endl;
+    }
+    else // DEBUG: output m_tokens
+    {
+        bool first = true;
+        for (const Nova_Lang::Token& token : tokens)
+        {
+            if (!first)
+            {
+                std::cout << " | " << token.Represent();
+                continue;
+            }
+
+            std::cout << token.Represent();
+            first = false;
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 int main(int argc, char** argv)
 {
     std::pair<std::string, std::string> file_info;
-    // Check for file input, else use standard input
+    // Check for file m_input, else use standard m_input
     if (argc == 1)
         file_info = std_input();
     else
         file_info = file_input(argv[1]);
 
-    auto lexer_pair = Nova_Lang::run_lexer(file_info.first, file_info.second);
+    // Start compile timing
+    Nova_Lang::Timer compile_timer;
 
-    std::vector<Nova_Lang::Token> tokens = lexer_pair.first;
+    std::string file_contents = file_info.first;
+    std::string file_name = file_info.second;
 
-    std::vector<Nova_Lang::Base_Error> errors = lexer_pair.second;
+    auto tokens = Nova_Lang::run_lexer(file_contents, file_name);
 
 #ifdef DEBUG
     std::cout << "Nova Language Compiler v" << NOVA_VERSION << std::endl;
-    if (!errors.empty())
-    {
-        for (const Nova_Lang::Base_Error& error : errors)
-            std::cout << error.As_String() << std::endl;
-    }
-    else // Temporary: output tokens
-    {
-        for (const Nova_Lang::Token& token : tokens)
-            std::cout << token.Represent() << " | ";
-        std::cout << std::endl;
-    }
-#endif
+    output_debug_tokens(tokens);
+#endif // DEBUG
 
-    std::cout << "Build Finished" << std::endl;
+    Nova_Lang::Parser parser(std::move(tokens), file_name, 0);
+    std::optional<Nova_Lang::NodeExit> root = parser.ParseExit();
+
+    make_asm(root);
+
+    std::cout << "Build Finished in " << compile_timer.getDuration() << "ms" << std::endl;
 }
