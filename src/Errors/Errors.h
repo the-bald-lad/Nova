@@ -29,16 +29,16 @@ namespace Nova_Lang
         std::string super_file_name;
     };
 
-    struct Illegal_Char_Error : public Base_Error
+    struct Illegal_Char_Error final : Base_Error
     {
-        Illegal_Char_Error(char c, std::string file_name);
+        Illegal_Char_Error(char c, std::string& file_name);
 
         ~Illegal_Char_Error() override = default;
 
         [[nodiscard]] std::string As_String() const override;
     };
 
-    struct Parser_Error : public Base_Error
+    struct Parser_Error final : Base_Error
     {
         Parser_Error(const Token& token, std::string name, std::string file_name);
 

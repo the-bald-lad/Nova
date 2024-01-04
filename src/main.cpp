@@ -1,6 +1,6 @@
 #include "Lexer/Lexer.h"
 #include "Parser/Parser.h"
-#include "Asm_Generation/Generate.h"
+#include "Asm_Generation/LinuxAsm.h"
 #include "Errors/Errors.h"
 #include "Timing/Timer.h"
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief Get m_input from standard m_input and run the lexer on it.
- * This is the equivalent of running the command `nova run` in a terminal.
+ * This is the equivalent of running the command `nova` in a terminal.
 */
 std::pair<std::string, std::string> std_input()
 {
@@ -53,23 +53,24 @@ std::pair<std::string, std::string> file_input(char* &file_name)
     return std::make_pair(file_contents, file_name);
 }
 
-void make_asm(std::optional<Nova_Lang::NodeExit>& root)
+void make_asm(const std::vector<std::any>& root)
 {
-    if (!root.has_value())
+    if (root.empty())
     {
         std::cerr << "Root node has no value" << std::endl;  // Change this to custom error
         exit(1);
     }
 
-    Nova_Lang::Assembly_Generator asm_generator(root.value());
+    const Nova_Lang::Assembly_Generator asm_generator(root);
 
+    // TODO: Fix working directory
     std::ofstream outfile {"../nova-build/out.asm" };
     outfile << asm_generator.generateAsm();
 
     outfile.close();
 }
 
-void output_debug_tokens(std::vector<Nova_Lang::Token>& tokens)
+void output_debug_tokens(const std::vector<Nova_Lang::Token>& tokens)
 {
     if (!Nova_Lang::error_buffer.empty())
     {
@@ -95,9 +96,11 @@ void output_debug_tokens(std::vector<Nova_Lang::Token>& tokens)
 }
 
 
-int main(int argc, char** argv)
+int main(const int argc, char** argv)
 {
+    // Set up file information pair
     std::pair<std::string, std::string> file_info;
+
     // Check for file m_input, else use standard m_input
     if (argc == 1)
         file_info = std_input();
@@ -118,7 +121,7 @@ int main(int argc, char** argv)
 #endif // DEBUG
 
     Nova_Lang::Parser parser(std::move(tokens), file_name, 0);
-    std::optional<Nova_Lang::NodeExit> root = parser.ParseExit();
+    const std::vector<std::any> root = parser.Parse();
 
     make_asm(root);
 

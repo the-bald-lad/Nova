@@ -15,7 +15,7 @@ namespace Nova_Lang
             duration = end_time - start_time;
 
             // Convert from seconds to milliseconds
-            float ms = duration.count() * 1000.0f;
+            const float ms = duration.count() * 1000.0f;
 
             return ms;
         }

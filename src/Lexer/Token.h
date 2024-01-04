@@ -9,7 +9,7 @@ namespace Nova_Lang
     enum class TokenTypes
     {
         // Variable types
-        T_INT_VAR,
+        T_INT_VAR = 0,
         T_FLOAT_VAR,
         T_STRING_VAR,
 
@@ -25,9 +25,6 @@ namespace Nova_Lang
         T_DIV,
         T_MOD,
 
-        // Keywords
-        T_EXIT,
-
         // Brackets
         T_LBRACKET,
         T_RBRACKET,
@@ -38,6 +35,10 @@ namespace Nova_Lang
 
         // End of statement
         T_SEMICOLON,
+
+        // Keywords
+        T_EXIT,
+        T_PRINT,
     };
 
     struct Token

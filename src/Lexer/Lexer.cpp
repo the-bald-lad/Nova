@@ -37,12 +37,17 @@ namespace Nova_Lang
             {
                 Create_Digit_Literal();
             }
+            else if (m_current_char == '"')  // Creates a string literal
+            {
+                Create_String_Literal();
+            }
             else if (std::isalpha(m_current_char))  // Is an identifier or keyword
             {
                 Create_Identifier();
             }
 
             /* End of line*/
+
             else if (m_current_char == ';')
             {
                 // If a semicolon is found, the statement is over.
@@ -116,8 +121,9 @@ namespace Nova_Lang
             }
             else
             {
-                Illegal_Char_Error error = Illegal_Char_Error(this->m_current_char, this->m_file_name);
+                auto error = Illegal_Char_Error(this->m_current_char, this->m_file_name);
                 error_buffer.push_back(error);
+                Advance();
             }
         }
     }
@@ -152,7 +158,7 @@ namespace Nova_Lang
 
         if (decimal_count == 0)
         {
-            int64_t output_value = std::stoi(m_buffer);
+            const int64_t output_value = std::stoi(m_buffer);
 
             std::string output_value_string = std::to_string(output_value);
 
@@ -160,7 +166,7 @@ namespace Nova_Lang
         }
         else
         {
-            float output_value = std::stof(m_buffer);
+            const float output_value = std::stof(m_buffer);
 
             std::string output_value_string = std::to_string(output_value);
 
@@ -232,9 +238,14 @@ namespace Nova_Lang
         {
             m_tokens.push_back({ .type = TokenTypes::T_EXIT });
         }
+        else if (m_buffer == "print")  // Standard output
+        {
+            m_tokens.push_back({ .type = TokenTypes::T_PRINT });
+        }
         else if (m_buffer == "string")  // string variable assignment
         {
             // TODO: Change token values to be able to be another token
+            // TODO: Maybe change so that variable names are excluded and only data is preserved
             Parse_StringVar_Name();
 
             m_tokens.push_back({ .type = TokenTypes::T_STRING_VAR, .value = m_buffer });
@@ -246,17 +257,37 @@ namespace Nova_Lang
         else
         {
             // TODO: Create illegal keyword error subclass
-            Illegal_Char_Error error = Illegal_Char_Error(this->m_current_char, this->m_file_name);  // TEMP
+            const auto error = Illegal_Char_Error(this->m_current_char, this->m_file_name);  // TEMP
             error_buffer.push_back(error);
         }
 
         m_buffer.clear();
     }
 
-    // Called from main, returns a pair of vectors containing the m_tokens and errors
-    std::vector<Token> run_lexer(std::string& input, std::string& file_name)
+    void Lexer::Create_String_Literal()
     {
-        Nova_Lang::Lexer lexer(input, file_name);
+        // Remove first quote
+        Advance();
+
+        while (m_current_char != m_end_of_file && std::isalnum(m_current_char))
+        {
+            if (m_current_char == '"')
+                break;
+            m_buffer += m_current_char;
+
+            Advance();
+        }
+
+        m_tokens.push_back({ .type = TokenTypes::T_STRING_LITERAL, .value = m_buffer });
+
+        m_buffer.clear();
+        Advance();
+    }
+
+    // Called from main, returns a pair of vectors containing the m_tokens and errors
+    std::vector<Token> run_lexer(const std::string& input, const std::string& file_name)
+    {
+        Lexer lexer(input, file_name);
         lexer.Tokenize();
 
         return lexer.Get_Tokens();

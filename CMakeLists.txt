@@ -15,8 +15,8 @@ add_executable(nova src/main.cpp
         "src/Errors/Illegal_Char_Error.cpp"
         "src/Parser/Parser.cpp"
         "src/Parser/Parser.h"
-        "src/Asm_Generation/Generate.cpp"
-        "src/Asm_Generation/Generate.h"
+        "src/Asm_Generation/LinuxAsm.cpp"
+        "src/Asm_Generation/LinuxAsm.h"
         "src/Timing/Timer.cpp"
         "src/Timing/Timer.h"
 )

@@ -48,7 +48,9 @@ namespace Nova_Lang
         void Create_Digit_Literal();
 
         void Create_Identifier();
+
+        void Create_String_Literal();
     };
 
-    std::vector<Token> run_lexer(std::string&, std::string&);
+    std::vector<Token> run_lexer(const std::string&, const std::string&);
 }
